@@ -1,6 +1,7 @@
 package org.nea.springauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,18 @@ public class AppController {
 
     @PostMapping("/process_register")
     public String processRegistration(User user) {
+        BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = pwdEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
         repo.save(user);
         return "register_success";
     }
+
+    @GetMapping("list_users")
+    public String viewUsersList() {
+
+        return "users";
+    }
+
 }
