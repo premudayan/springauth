@@ -1,10 +1,12 @@
 package org.nea.springauth;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -30,4 +32,6 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+
 }
