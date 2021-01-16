@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class AppController {
 
@@ -36,8 +38,9 @@ public class AppController {
     }
 
     @GetMapping("list_users")
-    public String viewUsersList() {
-
+    public String viewUsersList(Model model) {
+        List<User> users = repo.findAll();
+        model.addAttribute("users", users);
         return "users";
     }
 
