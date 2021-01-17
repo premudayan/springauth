@@ -49,4 +49,15 @@ public class AppController {
         return "login";
     }
 
+    @PostMapping("login_success_handler")
+    public String loginSuccessHandler() {
+        System.out.println("Login Success Handler ....");
+        return "index";
+    }
+
+    @PostMapping("login_failure_handler")
+    public String loginFailureHandler() {
+        System.out.println("Login Failure handler ....");
+        return "login_error";
+    }
 }
