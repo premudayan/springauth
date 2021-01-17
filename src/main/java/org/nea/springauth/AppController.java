@@ -44,4 +44,9 @@ public class AppController {
         return "users";
     }
 
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
 }
